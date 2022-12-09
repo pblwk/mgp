@@ -105,9 +105,66 @@ On your local browser, visit `111.111.111.111/hello`, you should see the greetin
 
 ## Step 2. Deploy the Web Interface
 
-Log in another node you create. Suppose the public IP is `99.99.99.99`
+Log in another node you create. Suppose the public IP is `222.222.222.222`
+
+Download the web interface:
+
+```bash
+cd ~
+git clone https://github.com/pblwk/mgp.git
+```
+
+Modify the server address. Use vim open the `mgp/client/index.html` file, change the `SERVER_ADDRESS`  to correct IP address of the recognition system, just like: 
+
+```javascript
+const SERVER_ADDRESS="http://111.111.111.111"
+```
+
+Install Nginx:
+
+```bash
+sudo apt update
+sudo apt install nginx
+```
+
+Verify you've installed it successfully: 
+
+```bash
+nginx -v
+```
+
+Create an Nginx config file `client.conf` save it to `/etc/nginx/conf.d/` . Please make sure that `222.222.222.222`  should be replaced with your node's IP address. `phuang` should be replaced with your own username. 
+
+```nginx
+server {
+        listen 80;
+        listen [::]:80;
+        server_name 222.222.222.222;
+        root /users/phuang/mgp/client;
+
+        location / {
+	}
+
+}
+```
 
 
+
+Check the Nginx configuration file:
+
+```bash
+sudo nginx -t
+```
+
+Start nginx
+
+```bash
+sudo systemctl restart nginx.service
+```
+
+On your local browser, visit `222.222.222.222`, you should see the webpage and upload the image. 
+
+Please don't upload the image of more than 200kB size. 
 
 
 
