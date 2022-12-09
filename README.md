@@ -164,7 +164,37 @@ sudo systemctl restart nginx.service
 
 On your local browser, visit `222.222.222.222`, you should see the webpage and upload the image. 
 
-Please don't upload the image of more than 200kB size. 
+Please don't upload the image that exceeds 200kB size. 
+
+## Step 3. Reproduce the experiment.
+
+The script of the experiment is in [experiment.py](experiment/experiment.py). You should run the script on your own machine.
+
+Firstly, you should run replace the `URL` variable with correct recognition system IP address, just like:
+
+```Python
+  URL = "http://111.111.111.111/upload"
+```
+
+Secondly, you should determine the number of threads by modify the `THREAD_NUM` variable. Please do not set it to exceed 10.
+
+Run the script:
+
+```bash
+python experiment.py
+```
+
+What's more, you can limit the capacity of the network (e.g., limit to 10kbit/s) by running the the command below on recognition system's node. 
+
+```bash
+sudo tc qdisc replace dev eth0 root netem rate 10kbit 
+```
+
+And reset it. 
+
+```bash
+sudo tc qdisc del dev eth0 root
+```
 
 
 

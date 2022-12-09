@@ -4,17 +4,17 @@ import threading
 import statistics
 # url = "http://localhost:8080/upload"
 
-results=[[] for _ in range(5)]
+results=[[] for _ in range(4)]
 
 def experiment():
-  REPEAT_TIMES=15
+  REPEAT_TIMES=10
   IMAGE_NAME="n01443537_goldfish"
   IMAGE_EXT=".jpeg"
   IMAGE_DIR="."
-  URL = "http://143.215.216.207/upload"
+  URL = "http://143.215.216.204/upload"
   # URL = "http://localhost:8080/upload"
 
-  for index in range(0,5):
+  for index in range(0,4):
 
     full_image_name=IMAGE_NAME+"_"+str(index)+IMAGE_EXT
     full_image_path=IMAGE_DIR+"/"+full_image_name
@@ -37,7 +37,7 @@ def experiment():
 
 
 if __name__=="__main__":
-  THREAD_NUM=1
+  THREAD_NUM=2
   threads=[]
   for thread_index in range(THREAD_NUM):
     t = threading.Thread(target=experiment)
