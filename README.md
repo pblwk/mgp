@@ -166,7 +166,7 @@ On your local browser, visit `222.222.222.222`, you should see the webpage and u
 
 Please don't upload the image that exceeds 200kB size. 
 
-## Step 3. Reproduce the experiment.
+## Step 3. Setup and Reproduce the experiment.
 
 The script of the experiment is in [experiment.py](experiment/experiment.py). You should run the script on your own machine.
 
