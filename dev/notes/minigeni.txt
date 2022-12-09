@@ -1,0 +1,95 @@
+ssh -l phuang -p 29010 pc3.instageni.rnoc.gatech.edu
+scp -P 29010  mini-geni-0.0.1-SNAPSHOT.jar phuang@pc3.instageni.rnoc.gatech.edu:~
+
+
+
+
+ssh -l phuang -p 22 pcvm4-10.instageni.rnoc.gatech.edu
+scp -P 22  mini-geni-0.0.1-SNAPSHOT.jar phuang@pcvm4-10.instageni.rnoc.gatech.edu:~
+143.215.216.207
+
+scp -P 22 -r client phuang@143.215.216.206:~
+
+
+
+curl -s "https://get.sdkman.io" | bash
+
+source "/users/phuang/.sdkman/bin/sdkman-init.sh"
+
+
+sdk install java
+
+
+
+sudo ufw enable
+
+sudo ufw allow 8080
+
+lsof -t -i:8080
+kill -9 $(lsof -t -i:8080)
+
+nohup java -jar mini-geni-0.0.2-SNAPSHOT.jar &
+
+
+
+
+
+
+server {
+        listen 80;
+        listen [::]:80;
+	server_name:143.215.216.207;
+	client_max_body_size 100M;
+
+
+        location / {
+             proxy_pass http://127.0.0.1:8080/;
+             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+             proxy_set_header X-Forwarded-Proto $scheme;
+             proxy_set_header X-Forwarded-Port $server_port;
+        }
+
+
+}
+
+server {
+        listen 80;
+        listen [::]:80;
+	server_name 143.215.216.206;
+	root /users/phuang/client;
+
+        location / {
+	}
+
+
+}
+
+
+
+sudo apt update
+sudo apt install nginx
+
+
+sudo nginx -t
+sudo systemctl restart nginx.service
+
+
+sudo tc qdisc show
+
+
+
+sudo tc qdisc show
+qdisc noqueue 0: dev lo root refcnt 2 
+qdisc fq_codel 0: dev eth0 root refcnt 2 limit 10240p flows 1024 quantum 1514 target 5.0ms interval 100.0ms memory_limit 32Mb ecn 
+phuang@node-0:~$ tc -s -d class show dev eth0
+
+
+
+nohup java -Xmx4G -jar mini-geni-0.0.2-SNAPSHOT.jar &
+
+
+sudo tc qdisc replace dev eth0 root netem rate 1000kbit  
+
+
+sudo tc qdisc del dev eth0 root 
+恢復

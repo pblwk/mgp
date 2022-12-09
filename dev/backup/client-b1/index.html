@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini GENI</title>
+
+</head>
+<body>
+<h1>Mini GENI</h1>
+<p>Please upload an image.</p>
+<input type="file" accept="image/png, image/jpeg" id="fileLoad" onchange="displayImage(event)">
+<p><img id="image" width="200" /></p>
+<button type="button" onclick="upload()">Upload</button>
+<p id="response_text"></p>
+
+</body>
+<script>
+// const SERVER_ADDRESS="http://localhost:8080"
+const SERVER_ADDRESS="http://143.215.216.207"
+
+
+function displayImage(event) {
+    const image = document.getElementById('image');
+    image.src = URL.createObjectURL(event.target.files[0]);
+
+}
+
+async function upload() {
+    let formData = new FormData();
+    formData.append("file", fileLoad.files[0]);
+
+    let response = await fetch(SERVER_ADDRESS+'/upload', {
+        method: "POST",
+        body: formData,
+    })
+    if (response.status === 200) {
+        response.text().then(function (text) {
+            console.log(text)
+            document.getElementById("response_text").innerHTML = text;
+        })
+    }
+
+
+}
+
+// async function upload_backup() {
+//     let formData = new FormData();
+//     formData.append("file", fileLoad.files[0]);
+//
+//     let response = await fetch(SERVER_ADDRESS+'/upload', {
+//         method: "POST",
+//         body: formData,
+//     })
+//     // if (response.status === 200) {
+//     //
+//     // }
+//     response.text().then(function (text) {
+//         console.log(text)
+//         document.getElementById("response_text").innerHTML = text;
+//     })
+//
+// }
+
+
+//
+// async function upload2() {
+//     let formData = new FormData();
+//     formData.append("file", fileLoad.files[0]);
+//
+//     var responseText = '';
+//     $.ajax({ type: "POST",
+//         url: SERVER_ADDRESS+"/upload",
+//         async: false,
+//         data:formData,
+//         success: function(text){
+//             console.log(text)
+//         }
+//
+//
+//     });
+//     console.log(responseText)
+//
+// }
+
+//
+// function uploadAndRecognize(){
+//
+//
+// }
+
+// function httpGetAsync(theUrl, callback) {
+//     const xmlHttp = new XMLHttpRequest();
+//     xmlHttp.onreadystatechange = function() {
+//         if (xmlHttp.readyState === 4 && xmlHttp.status === 200)
+//             callback(xmlHttp.responseText);
+//     }
+//     xmlHttp.open("GET", theUrl, true); // true for asynchronous
+//     xmlHttp.send(null);
+// }
+// httpGetAsync(SERVER_ADDRESS+"/hello",console.log)
+</script>
+</html>
+
+
+
+
