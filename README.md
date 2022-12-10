@@ -4,7 +4,7 @@ Useful Links:
 
 [Usage Demo Video](demo.mov)
 
-[Experiment Setup Video]()
+[Experiment Setup Video](https://drive.google.com/file/d/1XwogL1OW9menQbfYLtlpnQIi0AyuzlC-/view?usp=sharing)
 
 [Report](dev/report.md)
 
