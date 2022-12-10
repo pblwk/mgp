@@ -1,6 +1,18 @@
 # Deployment Instructions
 
-Above all, please use the [Rspec](config/Rspec) to reserve a resource in GENI. Please make sure that the Publicly Routable IP option is checked. 
+Useful Links:
+
+[Usage Demo Video](demo.mov)
+
+[Experiment Setup Video]()
+
+[Report](dev/report.md)
+
+[Application Public Link](http://143.215.216.206)
+
+[Sample Images](https://github.com/pblwk/samples)
+
+Above all, please use the [Rspec](config/Rspec.xml) to reserve a resource in GENI. Please make sure that the Publicly Routable IP option is checked. 
 
 ## Step 1. Deploy the Recognition System
 

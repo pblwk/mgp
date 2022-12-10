@@ -12,11 +12,25 @@ I also finished the measurement experiments about the impact of capacity, concur
 
 **Motivation/Learning Outcomes**
 
-1) Full-stack programming           6) Design of GENI nodes deployment
-2) Spring framework                     7) Evaluation of throughput and RTT
-3) Deeplearning4j library for AI   8) Multi-Thread and Concurrency Design
-4) RESTful API Design                    9) Dependency Injection Design Pattern
-5) Traffic Control                           10) Nginx Configuration and Reverse Agency
+1) Full-stack programming           
+
+2) Spring framework                     
+
+3) Deeplearning4j library for AI   
+
+4) RESTful API Design                    
+
+5) Traffic Control                           
+
+6) Design of GENI nodes deployment
+
+7) Evaluation of throughput and RTT
+
+8) Multi-Thread and Concurrency Design
+
+9) Dependency Injection Design Pattern
+
+10) Nginx Configuration and Reverse Agency
 
 #### Experimental Methodology
 
